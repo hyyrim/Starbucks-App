@@ -1,5 +1,6 @@
 'use strict';
 
+// 헤더 검색창
 const searchEl = document.querySelector('.search');
 const searchInputEl = searchEl.querySelector('input');
 
@@ -18,6 +19,7 @@ searchInputEl.addEventListener('blur', () => {
 });
 
 
+// 우측 배지
 const badgeEl = document.querySelector('header .badges');
 
 window.addEventListener('scroll', _.throttle( () => {
@@ -35,6 +37,7 @@ window.addEventListener('scroll', _.throttle( () => {
 }, 300 ));
 
 
+// 메인 이미지
 const fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach( (fadeEl, index) => {
   gsap.to(fadeEl, 1, {
@@ -42,3 +45,12 @@ fadeEls.forEach( (fadeEl, index) => {
     opacity: 1
   })
 });
+
+
+// 공지사항 슬라이더
+new Swiper('.notice-line .swiper-container', {
+  direction: 'vertical',
+  autoplay: true,
+  loop: true
+});
+
