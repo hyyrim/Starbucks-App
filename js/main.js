@@ -73,6 +73,19 @@ new Swiper('.promotion .swiper-container', {
   } 
 });
 
+// 홈페이지 하단 슬라이더
+new Swiper('.awards .swiper-container', {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: '.awards .swiper-prev',
+    nextEl: '.awards .swiper-next'
+  }
+});
+
+
 
 // 프로모션 토글
 const promotionEl = document.querySelector('.promotion');
@@ -129,5 +142,3 @@ spyEls.forEach((spyEl) => {
     .addTo(new ScrollMagic.Controller());
 });
 
-
-// 홈페이지 하단 슬라이더
