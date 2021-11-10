@@ -19,22 +19,42 @@ searchInputEl.addEventListener('blur', () => {
 });
 
 
-// 우측 배지
+// 우측 배지, 우측 하단 스크롤 버튼
 const badgeEl = document.querySelector('header .badges');
+const topToEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle( () => {
   if (window.scrollY > 500) {
+    // 배지 숨기기
     gsap.to(badgeEl, .6, {
       opacity: 0,
       display: 'none'
     });
+    // 버튼 보이기
+    gsap.to(topToEl, .2, {
+      x: 0,
+      opacity: 1
+    });
   } else {
+    // 배지 보이기
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display: 'block'
     });
+    // 버튼 숨기기
+    gsap.to(topToEl, .2, {
+      x: 100, 
+    });
   }
 }, 300 ));
+
+
+// 버튼 - 스크롤 동작
+topToEl.addEventListener('click', () => {
+  gsap.to(window, .7, {
+    scrollTo: 0 // 화면의 0px 지점으로 옮김
+  })
+});
 
 
 // 메인 이미지
@@ -142,3 +162,7 @@ spyEls.forEach((spyEl) => {
     .addTo(new ScrollMagic.Controller());
 });
 
+
+// 올해 년도 구하기
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();
